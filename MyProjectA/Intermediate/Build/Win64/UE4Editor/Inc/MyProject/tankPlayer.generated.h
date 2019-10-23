@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define MYPROJECT_tankPlayer_generated_h
 
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_RPC_WRAPPERS
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_INCLASS_NO_PURE_DECLS \
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_RPC_WRAPPERS
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_RPC_WRAPPERS_NO_PURE_DECLS
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAtankPlayer(); \
 	friend struct Z_Construct_UClass_AtankPlayer_Statics; \
@@ -24,7 +24,7 @@ public: \
 	DECLARE_SERIALIZER(AtankPlayer)
 
 
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_INCLASS \
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_INCLASS \
 private: \
 	static void StaticRegisterNativesAtankPlayer(); \
 	friend struct Z_Construct_UClass_AtankPlayer_Statics; \
@@ -33,7 +33,7 @@ public: \
 	DECLARE_SERIALIZER(AtankPlayer)
 
 
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_STANDARD_CONSTRUCTORS \
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AtankPlayer(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AtankPlayer) \
@@ -46,7 +46,7 @@ private: \
 public:
 
 
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_ENHANCED_CONSTRUCTORS \
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AtankPlayer(AtankPlayer&&); \
@@ -57,26 +57,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AtankPlayer); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AtankPlayer)
 
 
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_PRIVATE_PROPERTY_OFFSET
-#define MyProjectA_Source_MyProject_tankPlayer_h_9_PROLOG
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_GENERATED_BODY_LEGACY \
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_PRIVATE_PROPERTY_OFFSET
+#define MyProjectA_Source_MyProject_tankPlayer_h_10_PROLOG
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_PRIVATE_PROPERTY_OFFSET \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_RPC_WRAPPERS \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_INCLASS \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_STANDARD_CONSTRUCTORS \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_PRIVATE_PROPERTY_OFFSET \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_RPC_WRAPPERS \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_INCLASS \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define MyProjectA_Source_MyProject_tankPlayer_h_12_GENERATED_BODY \
+#define MyProjectA_Source_MyProject_tankPlayer_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_PRIVATE_PROPERTY_OFFSET \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_INCLASS_NO_PURE_DECLS \
-	MyProjectA_Source_MyProject_tankPlayer_h_12_ENHANCED_CONSTRUCTORS \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_PRIVATE_PROPERTY_OFFSET \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_INCLASS_NO_PURE_DECLS \
+	MyProjectA_Source_MyProject_tankPlayer_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

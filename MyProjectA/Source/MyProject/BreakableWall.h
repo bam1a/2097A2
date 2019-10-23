@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "Engine/StaticMeshActor.h"
 #include "BreakableWall.generated.h"
 
 UCLASS()
-class MYPROJECT_API ABreakableWall : public AActor
+class MYPROJECT_API ABreakableWall : public AStaticMeshActor
 {
 	GENERATED_BODY()
 	

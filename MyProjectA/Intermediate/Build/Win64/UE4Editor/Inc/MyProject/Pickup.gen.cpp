@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodePickup() {}
 	MYPROJECT_API UFunction* Z_Construct_UFunction_APickup_isActive();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_APickup_OnRep_IsActive();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_APickup_setActive();
+	ENGINE_API UClass* Z_Construct_UClass_UArrowComponent_NoRegister();
 // End Cross Module References
 	void APickup::StaticRegisterNativesAPickup()
 	{
@@ -143,6 +144,10 @@ void EmptyLinkFunctionForGeneratedCodePickup() {}
 #endif
 		static void NewProp_bIsActive_SetBit(void* Obj);
 		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bIsActive;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pickupArrow_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_pickupArrow;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -174,8 +179,18 @@ void EmptyLinkFunctionForGeneratedCodePickup() {}
 		((APickup*)Obj)->bIsActive = 1;
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APickup_Statics::NewProp_bIsActive = { UE4CodeGen_Private::EPropertyClass::Bool, "bIsActive", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080100000020, 1, "OnRep_IsActive", sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APickup), &Z_Construct_UClass_APickup_Statics::NewProp_bIsActive_SetBit, METADATA_PARAMS(Z_Construct_UClass_APickup_Statics::NewProp_bIsActive_MetaData, ARRAY_COUNT(Z_Construct_UClass_APickup_Statics::NewProp_bIsActive_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APickup_Statics::NewProp_pickupArrow_MetaData[] = {
+		{ "Category", "Components" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Pickup.h" },
+		{ "ToolTip", "UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"Components\")\n       class UStaticMeshComponent* pickupBaseMesh;" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APickup_Statics::NewProp_pickupArrow = { UE4CodeGen_Private::EPropertyClass::Object, "pickupArrow", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x001000000008001d, 1, nullptr, STRUCT_OFFSET(APickup, pickupArrow), Z_Construct_UClass_UArrowComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APickup_Statics::NewProp_pickupArrow_MetaData, ARRAY_COUNT(Z_Construct_UClass_APickup_Statics::NewProp_pickupArrow_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APickup_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APickup_Statics::NewProp_bIsActive,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APickup_Statics::NewProp_pickupArrow,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APickup_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APickup>::IsAbstract,
@@ -200,7 +215,7 @@ void EmptyLinkFunctionForGeneratedCodePickup() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APickup, 346502251);
+	IMPLEMENT_CLASS(APickup, 1094817777);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APickup(Z_Construct_UClass_APickup, &APickup::StaticClass, TEXT("/Script/MyProject"), TEXT("APickup"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APickup);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

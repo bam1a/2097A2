@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/StaticMeshActor.h"
+#include "Components/ArrowComponent.h"
 #include "Pickup.generated.h"
 
 UCLASS()
@@ -14,6 +15,10 @@ class MYPROJECT_API APickup : public AStaticMeshActor
 public:	
 	// Sets default values for this actor's properties
 	APickup();
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
+	//	class UStaticMeshComponent* pickupBaseMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
+		class UArrowComponent* pickupArrow;
 
 protected:
 	// Called when the game starts or when spawned

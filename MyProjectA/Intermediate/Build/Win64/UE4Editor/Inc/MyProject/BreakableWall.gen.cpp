@@ -15,7 +15,7 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 // Cross Module References
 	MYPROJECT_API UClass* Z_Construct_UClass_ABreakableWall_NoRegister();
 	MYPROJECT_API UClass* Z_Construct_UClass_ABreakableWall();
-	ENGINE_API UClass* Z_Construct_UClass_AActor();
+	ENGINE_API UClass* Z_Construct_UClass_AStaticMeshActor();
 	UPackage* Z_Construct_UPackage__Script_MyProject();
 // End Cross Module References
 	void ABreakableWall::StaticRegisterNativesABreakableWall()
@@ -35,13 +35,15 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
 	UObject* (*const Z_Construct_UClass_ABreakableWall_Statics::DependentSingletons[])() = {
-		(UObject* (*)())Z_Construct_UClass_AActor,
+		(UObject* (*)())Z_Construct_UClass_AStaticMeshActor,
 		(UObject* (*)())Z_Construct_UPackage__Script_MyProject,
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABreakableWall_Statics::Class_MetaDataParams[] = {
+		{ "HideCategories", "Input" },
 		{ "IncludePath", "BreakableWall.h" },
 		{ "ModuleRelativePath", "BreakableWall.h" },
+		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
 #endif
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ABreakableWall_Statics::StaticCppClassTypeInfo = {
@@ -67,7 +69,7 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABreakableWall, 1436565621);
+	IMPLEMENT_CLASS(ABreakableWall, 1748268416);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ABreakableWall(Z_Construct_UClass_ABreakableWall, &ABreakableWall::StaticClass, TEXT("/Script/MyProject"), TEXT("ABreakableWall"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ABreakableWall);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

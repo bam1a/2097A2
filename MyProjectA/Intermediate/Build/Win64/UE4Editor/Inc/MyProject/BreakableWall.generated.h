@@ -20,7 +20,7 @@ private: \
 	static void StaticRegisterNativesABreakableWall(); \
 	friend struct Z_Construct_UClass_ABreakableWall_Statics; \
 public: \
-	DECLARE_CLASS(ABreakableWall, AActor, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/MyProject"), NO_API) \
+	DECLARE_CLASS(ABreakableWall, AStaticMeshActor, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/MyProject"), NO_API) \
 	DECLARE_SERIALIZER(ABreakableWall)
 
 
@@ -29,7 +29,7 @@ private: \
 	static void StaticRegisterNativesABreakableWall(); \
 	friend struct Z_Construct_UClass_ABreakableWall_Statics; \
 public: \
-	DECLARE_CLASS(ABreakableWall, AActor, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/MyProject"), NO_API) \
+	DECLARE_CLASS(ABreakableWall, AStaticMeshActor, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/MyProject"), NO_API) \
 	DECLARE_SERIALIZER(ABreakableWall)
 
 

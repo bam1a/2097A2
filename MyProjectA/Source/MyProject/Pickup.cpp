@@ -17,6 +17,12 @@ APickup::APickup()
 	GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
 	GetStaticMeshComponent()->SetSimulatePhysics(true);
 
+	//pickupArrow->AttachParent = RootComponent;
+	//pickupBaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("pickupBaseMesh"));
+	//pickupBaseMesh->SetupAttachment(RootComponent);
+	pickupArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("pickupArrow"));
+	pickupArrow->SetupAttachment(RootComponent);
+
 }
 
 // Called when the game starts or when spawned
