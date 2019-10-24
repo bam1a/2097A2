@@ -3,12 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-//#include "Components/ArrowComponent.h"
+#include "GameFramework/Pawn.h"
+#include "Components/ArrowComponent.h"
+#include"Camera/CameraComponent.h"
 #include "tankPlayer.generated.h"
 
 UCLASS()
-class MYPROJECT_API AtankPlayer : public ACharacter
+class MYPROJECT_API AtankPlayer : public APawn
 {
 	GENERATED_BODY()
 
@@ -26,5 +27,22 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
+	//component to be visible
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* VisableComponent;
+
+	UPROPERTY(EditAnyWhere)
+		UCameraComponent* Camera;
+protected:
+	float speed = 500.0f;
+	float shootPower = 10.f;
+	float HP = 100.f;
+	FVector MovementInput;
+
+	void MoveForward(float Value);
+	void MoveBack(float Value);
+	void TurnRight(float Value);
+	void TurnLeft(float Value);
 
 };
