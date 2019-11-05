@@ -8,12 +8,80 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class ABreakableWall;
 #ifdef MYPROJECT_MyProjectCharacter_generated_h
 #error "MyProjectCharacter.generated.h already included, missing '#pragma once' in MyProjectCharacter.h"
 #endif
 #define MYPROJECT_MyProjectCharacter_generated_h
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_RPC_WRAPPERS \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetCurrentWall) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(ABreakableWall**)Z_Param__Result=P_THIS->GetCurrentWall(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execgetIsDead) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->getIsDead(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAddHP) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inHP); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AddHP(Z_Param_inHP); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAddHitPower) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inHit); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AddHitPower(Z_Param_inHit); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetHitPower) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetHitPower(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAddSpeed) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inSpeed); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AddSpeed(Z_Param_inSpeed); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetSpeed) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetSpeed(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execmyRole) \
 	{ \
@@ -24,7 +92,74 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetCurrentWall) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(ABreakableWall**)Z_Param__Result=P_THIS->GetCurrentWall(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execgetIsDead) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->getIsDead(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAddHP) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inHP); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AddHP(Z_Param_inHP); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAddHitPower) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inHit); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AddHitPower(Z_Param_inHit); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetHitPower) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetHitPower(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAddSpeed) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inSpeed); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AddSpeed(Z_Param_inSpeed); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetSpeed) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetSpeed(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execmyRole) \
 	{ \
@@ -35,7 +170,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_INCLASS_NO_PURE_DECLS \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMyProjectCharacter(); \
 	friend struct Z_Construct_UClass_AMyProjectCharacter_Statics; \
@@ -44,7 +179,7 @@ public: \
 	DECLARE_SERIALIZER(AMyProjectCharacter)
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_INCLASS \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAMyProjectCharacter(); \
 	friend struct Z_Construct_UClass_AMyProjectCharacter_Statics; \
@@ -53,7 +188,7 @@ public: \
 	DECLARE_SERIALIZER(AMyProjectCharacter)
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_STANDARD_CONSTRUCTORS \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AMyProjectCharacter(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMyProjectCharacter) \
@@ -66,7 +201,7 @@ private: \
 public:
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_ENHANCED_CONSTRUCTORS \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AMyProjectCharacter(AMyProjectCharacter&&); \
@@ -77,30 +212,33 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyProjectCharacter); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMyProjectCharacter)
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_PRIVATE_PROPERTY_OFFSET \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AMyProjectCharacter, CameraBoom); } \
-	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(AMyProjectCharacter, FollowCamera); }
+	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(AMyProjectCharacter, FollowCamera); } \
+	FORCEINLINE static uint32 __PPO__pSpeed() { return STRUCT_OFFSET(AMyProjectCharacter, pSpeed); } \
+	FORCEINLINE static uint32 __PPO__pHitPower() { return STRUCT_OFFSET(AMyProjectCharacter, pHitPower); } \
+	FORCEINLINE static uint32 __PPO__pHP() { return STRUCT_OFFSET(AMyProjectCharacter, pHP); }
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_10_PROLOG
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_GENERATED_BODY_LEGACY \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_11_PROLOG
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_PRIVATE_PROPERTY_OFFSET \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_RPC_WRAPPERS \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_INCLASS \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_STANDARD_CONSTRUCTORS \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_PRIVATE_PROPERTY_OFFSET \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_RPC_WRAPPERS \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_INCLASS \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define MyProjectA_Source_MyProject_MyProjectCharacter_h_13_GENERATED_BODY \
+#define MyProjectA_Source_MyProject_MyProjectCharacter_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_PRIVATE_PROPERTY_OFFSET \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_INCLASS_NO_PURE_DECLS \
-	MyProjectA_Source_MyProject_MyProjectCharacter_h_13_ENHANCED_CONSTRUCTORS \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_PRIVATE_PROPERTY_OFFSET \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_INCLASS_NO_PURE_DECLS \
+	MyProjectA_Source_MyProject_MyProjectCharacter_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

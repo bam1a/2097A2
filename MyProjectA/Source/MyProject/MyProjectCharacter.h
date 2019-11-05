@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "BreakableWall.h"
 #include "Pickup.h"
 #include "MyProjectCharacter.generated.h"
 
@@ -21,6 +22,9 @@ class AMyProjectCharacter : public ACharacter
 	class UCameraComponent* FollowCamera;
 public:
 	AMyProjectCharacter();
+
+	//do when begin play
+	void BeginPlay();
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
@@ -95,10 +99,47 @@ public:
 	void ProcessTraceHit(FHitResult& HitOut);
 
 	void ClearPickupInfo();
+	//functional variables
+	ABreakableWall* CurrentWall = nullptr;
+	APickup* CurrentPickup = nullptr;
 
-	APickup* CurrentPickup;
+	UPROPERTY(BlueprintReadOnly)
 	FString PickupName;
+	UPROPERTY(BlueprintReadOnly)
 	FString PickupDisplayText;
 	bool PickupFound;
+
+	//accessor and mutator
+	UFUNCTION(BlueprintPure)
+		float GetSpeed() { return pSpeed; }
+	UFUNCTION(BlueprintCallable)
+		void AddSpeed(float inSpeed) { pSpeed += inSpeed; }
+	UFUNCTION(BlueprintPure)
+		float GetHitPower() { return pHitPower; }
+	UFUNCTION(BlueprintCallable)
+		void AddHitPower(float inHit) { pHitPower += inHit; }
+	UFUNCTION(BlueprintPure)
+		float GetHP() { return pHP; }
+	UFUNCTION(BlueprintCallable)
+		void AddHP(float inHP);
+	UFUNCTION(BlueprintPure)
+		bool getIsDead(){ return pIsDead; }
+	UFUNCTION(BlueprintPure)
+		ABreakableWall* GetCurrentWall() { return CurrentWall; }
+
+	//parameters
+	//speed:move speed
+	//hit power: power for hitting the wall
+	//HP: health of the player(decrease by time)
+protected:
+	bool pIsDead = false;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float pSpeed = 500.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float pHitPower = 10.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float pHP = 100.f;
+
+	FString role="client";
 };
 

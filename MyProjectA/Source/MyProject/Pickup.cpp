@@ -8,20 +8,20 @@
 APickup::APickup()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	//PrimaryActorTick.bCanEverTick = true;
 
-	bReplicates = true;
+	bReplicates = true;//replicate the object to every player
 
 	//moveable and physics enabled
-	bReplicateMovement = true;
+	bReplicateMovement = true;//replicate the movement
 	GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
 	GetStaticMeshComponent()->SetSimulatePhysics(true);
 
 	//pickupArrow->AttachParent = RootComponent;
 	//pickupBaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("pickupBaseMesh"));
 	//pickupBaseMesh->SetupAttachment(RootComponent);
-	pickupArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("pickupArrow"));
-	pickupArrow->SetupAttachment(RootComponent);
+	//pickupArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("pickupArrow"));
+	//pickupArrow->SetupAttachment(RootComponent);
 
 }
 
@@ -54,7 +54,11 @@ void APickup::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	//these var. will be peramently replicated from server to client.
 	DOREPLIFETIME(APickup, bIsActive);
+	DOREPLIFETIME(APickup, HitCountA);
+	DOREPLIFETIME(APickup, pickupDisplayText);
+
 }
 
 bool APickup::isActive()
@@ -73,4 +77,22 @@ void APickup::setActive(bool inState)
 void APickup::OnRep_IsActive()
 {
 	//bla bla bla code
+}
+
+void APickup::OnRep_HitCount()
+{
+}
+
+void APickup::OnRep_HitCountA()
+{
+}
+
+void APickup::OnRep_pickupDisplayText()
+{
+}
+
+bool APickup::checkIsPlayerHit()
+{
+	//GetWorld()->player
+	return false;
 }

@@ -17,15 +17,24 @@ public:
 	APickup();
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
 	//	class UStaticMeshComponent* pickupBaseMesh;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
-		class UArrowComponent* pickupArrow;
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
+	//	class UArrowComponent* pickupArrow;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	FString pickupName = "default pickup";
-	FString pickupDisplayText = "default pickup display text";
+	//properties
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "basic property")
+		FString pickupName = "default pickup";
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "basic property",ReplicatedUsing = OnRep_pickupDisplayText)
+		FString pickupDisplayText = "default pickup display text";
+	UPROPERTY(ReplicatedUsing = OnRep_HitCount, BlueprintReadWrite, EditAnywhere, Category = "basic property")
+		float HitCount;
+	UPROPERTY(ReplicatedUsing = OnRep_HitCountA, BlueprintReadWrite, EditAnywhere, Category = "basic property")
+		float HitCountA;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "basic property")
+		FString name;
 
 public:	
 	// Called every frame
@@ -35,7 +44,7 @@ public:
 	FString GetPickupDisplayText();
 
 	//networking stuff
-	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&OutLifetimeProps) const override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&OutLifetimeProps) const override;
 
 	UFUNCTION(BlueprintPure)
 		bool isActive();
@@ -43,12 +52,32 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void setActive(bool inState);
 
+	UFUNCTION(BlueprintPure)
+		float getHitCount() { return HitCount; }
+	UFUNCTION(BlueprintCallable)
+		void addHitCount() {
+		if (Role == ROLE_Authority) { 
+			HitCountA++;
+			pickupDisplayText =FString::SanitizeFloat(HitCountA);
+		}
+		else {
+		}
+	}
+
+
+
 protected:
 	UPROPERTY(ReplicatedUsing = OnRep_IsActive)
 		bool bIsActive;
-
 	UFUNCTION()
 		virtual void OnRep_IsActive();
+	UFUNCTION()
+		virtual void OnRep_HitCount();
+	UFUNCTION()
+		virtual void OnRep_HitCountA();
+	UFUNCTION()
+		virtual void OnRep_pickupDisplayText();
 
-
+	UFUNCTION(BlueprintCallable)
+		bool checkIsPlayerHit();
 };

@@ -61,6 +61,7 @@ void EmptyLinkFunctionForGeneratedCodetankPlayer() {}
 		{ "Category", "tankPlayer" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "tankPlayer.h" },
+		{ "ToolTip", "UPROPERTY(EditAnywhere)\n       UCapsuleComponent* CapsuleComponent;" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AtankPlayer_Statics::NewProp_Camera = { UE4CodeGen_Private::EPropertyClass::Object, "Camera", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000080009, 1, nullptr, STRUCT_OFFSET(AtankPlayer, Camera), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AtankPlayer_Statics::NewProp_Camera_MetaData, ARRAY_COUNT(Z_Construct_UClass_AtankPlayer_Statics::NewProp_Camera_MetaData)) };
@@ -100,7 +101,7 @@ void EmptyLinkFunctionForGeneratedCodetankPlayer() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AtankPlayer, 3804934255);
+	IMPLEMENT_CLASS(AtankPlayer, 2927726503);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AtankPlayer(Z_Construct_UClass_AtankPlayer, &AtankPlayer::StaticClass, TEXT("/Script/MyProject"), TEXT("AtankPlayer"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AtankPlayer);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

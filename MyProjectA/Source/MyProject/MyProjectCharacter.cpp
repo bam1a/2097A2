@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Pickup.h"
+#include "BreakableWall.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -38,16 +39,29 @@ AMyProjectCharacter::AMyProjectCharacter()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
+	CameraBoom->TargetArmLength = 0.f; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
-
+	//Camera->SetupAttachment(CapsuleComponent);
+	FollowCamera->SetRelativeLocation(FVector(0.f, 0.f, 500.f));
+	FollowCamera->SetRelativeRotation(FRotator(180.f, -90.f, 0.f));
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+}
+
+void AMyProjectCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	if (Role == ROLE_Authority) {
+		role="server";
+	}
+	else {
+		role = "client";
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -280,17 +294,21 @@ void AMyProjectCharacter::ProcessTraceHit(FHitResult& HitOut)
 
 	// Cast the actor to APickup
 	APickup* const TestPickup = Cast<APickup>(HitOut.GetActor());
+	ABreakableWall* const targetWall = Cast <ABreakableWall>(HitOut.GetActor());
 
 	if (TestPickup)
 	{
 		// Keep a pointer to the Pickup
 		CurrentPickup = TestPickup;
 
+		//assign the pickup name for HUD use/other function.
+		PickupName = TestPickup->GetPickupName();
+		PickupDisplayText = TestPickup->GetPickupDisplayText();
 		// Set a local variable of the PickupName for the HUD
 		//UE_LOG(LogClass, Warning, TEXT("PickupName: %s"), *TestPickup->GetPickupName());
 		if (Role == ROLE_Authority) {
 			FString inText = "PickupName: " + TestPickup->GetPickupName();
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, inText );
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, inText );
 		}
 		PickupName = TestPickup->GetPickupName();
 
@@ -298,6 +316,19 @@ void AMyProjectCharacter::ProcessTraceHit(FHitResult& HitOut)
 		//UE_LOG(LogClass, Warning, TEXT("PickupDisplayText: %s"), *TestPickup->GetPickupDisplayText());
 		PickupDisplayText = TestPickup->GetPickupDisplayText();
 		PickupFound = true;
+	}
+	else if (targetWall) {
+		CurrentWall = targetWall;
+		//display the name of the wall
+		PickupName = targetWall->GetName();
+		PickupDisplayText = targetWall->GetText();
+		//if (Role == ROLE_Authority) {
+
+		//}
+		//else {
+		//	FString inText = "hit this wall: " + targetWall->GetName();
+		//	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, inText);
+		//}
 	}
 	else
 	{
@@ -308,4 +339,17 @@ void AMyProjectCharacter::ProcessTraceHit(FHitResult& HitOut)
 
 void AMyProjectCharacter::ClearPickupInfo()
 {
+	PickupName = "";
+	PickupDisplayText = "";
+	CurrentWall = nullptr;
+	CurrentPickup = nullptr;
+}
+
+void AMyProjectCharacter::AddHP(float inHP)
+{
+	pHP += inHP;
+	if (pHP <= 0) {
+		pIsDead = true;
+		pHP = 0;
+	}
 }

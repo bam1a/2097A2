@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\MyProject.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{740D90BF-1F61-4C11-B4BE-3F01ADB7C4F7}</UniqueIdentifier>
+      <UniqueIdentifier>{48B36F9E-5AEC-46E5-8F99-13E70431B6AE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\MyProject.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{A570BF6E-8C67-492A-9319-4E9129B016DF}</UniqueIdentifier>
+      <UniqueIdentifier>{9D1CD731-35DB-452B-BCA3-49403871E856}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,8 +30,26 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\MyProject">
-      <UniqueIdentifier>{7D780857-72A3-424E-A6BD-93817CBF323F}</UniqueIdentifier>
+      <UniqueIdentifier>{8EB5EC23-FB3D-463A-A21A-E58A97DB0D81}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\MyProject\BreakableWall.cpp">
+      <Filter>Source\MyProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MyProject\BreakableWall.h">
+      <Filter>Source\MyProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MyProject\EmitPickup.cpp">
+      <Filter>Source\MyProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MyProject\EmitPickup.h">
+      <Filter>Source\MyProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MyProject\LineTrace.cpp">
+      <Filter>Source\MyProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MyProject\LineTrace.h">
+      <Filter>Source\MyProject</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\MyProject\mesh001.cpp">
       <Filter>Source\MyProject</Filter>
     </ClCompile>
@@ -65,33 +83,23 @@
     <ClInclude Include="..\..\Source\MyProject\MyProjectGameMode.h">
       <Filter>Source\MyProject</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\MyProject\LineTrace.h">
-      <Filter>Source\MyProject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MyProject\Pickup.h">
-      <Filter>Source\MyProject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MyProject\BreakableWall.h">
-      <Filter>Source\MyProject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MyProject\tankPlayer.h">
-      <Filter>Source\MyProject</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\MyProject\LineTrace.cpp">
+    <ClCompile Include="..\..\Source\MyProject\myTankCharacter.cpp">
       <Filter>Source\MyProject</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\Source\MyProject\myTankCharacter.h">
+      <Filter>Source\MyProject</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\MyProject\Pickup.cpp">
       <Filter>Source\MyProject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MyProject\BreakableWall.cpp">
+    <ClInclude Include="..\..\Source\MyProject\Pickup.h">
       <Filter>Source\MyProject</Filter>
-    </ClCompile>
+    </ClInclude>
     <ClCompile Include="..\..\Source\MyProject\tankPlayer.cpp">
       <Filter>Source\MyProject</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\Source\MyProject\tankPlayer.h">
+      <Filter>Source\MyProject</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

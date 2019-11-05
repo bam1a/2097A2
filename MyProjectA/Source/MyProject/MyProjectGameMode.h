@@ -13,6 +13,9 @@ class AMyProjectGameMode : public AGameModeBase
 
 public:
 	AMyProjectGameMode();
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<int> PlayerIDArr;
 };
 
 

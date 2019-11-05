@@ -13,8 +13,256 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define MYPROJECT_BreakableWall_generated_h
 
-#define MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS
-#define MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS \
+	virtual void WallBreak_Implementation(); \
+	virtual void UpdateWallRender_Implementation(); \
+	virtual bool BeingHitClient_Validate(float ); \
+	virtual void BeingHitClient_Implementation(float inAtk); \
+	virtual void BeingHit_Implementation(float inAtk); \
+ \
+	DECLARE_FUNCTION(execOnRep_wText) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_wText(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_topHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_topHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_wHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_wHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_IsActive) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_IsActive(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execWallBreak) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->WallBreak_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execUpdateWallRender) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->UpdateWallRender_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBeingHitClient) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		if (!P_THIS->BeingHitClient_Validate(Z_Param_inAtk)) \
+		{ \
+			RPC_ValidateFailed(TEXT("BeingHitClient_Validate")); \
+			return; \
+		} \
+		P_THIS->BeingHitClient_Implementation(Z_Param_inAtk); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBeingHit) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BeingHit_Implementation(Z_Param_inAtk); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetText) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=P_THIS->GetText(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetName) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=P_THIS->GetName(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execsetActive) \
+	{ \
+		P_GET_UBOOL(Z_Param_inState); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->setActive(Z_Param_inState); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execisActive) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->isActive(); \
+		P_NATIVE_END; \
+	}
+
+
+#define MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void WallBreak_Implementation(); \
+	virtual void UpdateWallRender_Implementation(); \
+	virtual void BeingHit_Implementation(float inAtk); \
+ \
+	DECLARE_FUNCTION(execOnRep_wText) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_wText(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_topHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_topHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_wHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_wHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_IsActive) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_IsActive(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execWallBreak) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->WallBreak_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execUpdateWallRender) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->UpdateWallRender_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBeingHitClient) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		if (!P_THIS->BeingHitClient_Validate(Z_Param_inAtk)) \
+		{ \
+			RPC_ValidateFailed(TEXT("BeingHitClient_Validate")); \
+			return; \
+		} \
+		P_THIS->BeingHitClient_Implementation(Z_Param_inAtk); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBeingHit) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BeingHit_Implementation(Z_Param_inAtk); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetHP) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->GetHP(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetText) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=P_THIS->GetText(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetName) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=P_THIS->GetName(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execsetActive) \
+	{ \
+		P_GET_UBOOL(Z_Param_inState); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->setActive(Z_Param_inState); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execisActive) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->isActive(); \
+		P_NATIVE_END; \
+	}
+
+
+#define MyProjectA_Source_MyProject_BreakableWall_h_12_EVENT_PARMS \
+	struct BreakableWall_eventBeingHit_Parms \
+	{ \
+		float inAtk; \
+	}; \
+	struct BreakableWall_eventBeingHitClient_Parms \
+	{ \
+		float inAtk; \
+	};
+
+
+#define MyProjectA_Source_MyProject_BreakableWall_h_12_CALLBACK_WRAPPERS
 #define MyProjectA_Source_MyProject_BreakableWall_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABreakableWall(); \
@@ -57,13 +305,24 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ABreakableWall); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ABreakableWall)
 
 
-#define MyProjectA_Source_MyProject_BreakableWall_h_12_PRIVATE_PROPERTY_OFFSET
-#define MyProjectA_Source_MyProject_BreakableWall_h_9_PROLOG
+#define MyProjectA_Source_MyProject_BreakableWall_h_12_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__wHP() { return STRUCT_OFFSET(ABreakableWall, wHP); } \
+	FORCEINLINE static uint32 __PPO__topHP() { return STRUCT_OFFSET(ABreakableWall, topHP); } \
+	FORCEINLINE static uint32 __PPO__wName() { return STRUCT_OFFSET(ABreakableWall, wName); } \
+	FORCEINLINE static uint32 __PPO__wText() { return STRUCT_OFFSET(ABreakableWall, wText); } \
+	FORCEINLINE static uint32 __PPO__bIsActive() { return STRUCT_OFFSET(ABreakableWall, bIsActive); }
+
+
+#define MyProjectA_Source_MyProject_BreakableWall_h_9_PROLOG \
+	MyProjectA_Source_MyProject_BreakableWall_h_12_EVENT_PARMS
+
+
 #define MyProjectA_Source_MyProject_BreakableWall_h_12_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_PRIVATE_PROPERTY_OFFSET \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS \
+	MyProjectA_Source_MyProject_BreakableWall_h_12_CALLBACK_WRAPPERS \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_INCLASS \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_STANDARD_CONSTRUCTORS \
 public: \
@@ -75,6 +334,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_PRIVATE_PROPERTY_OFFSET \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	MyProjectA_Source_MyProject_BreakableWall_h_12_CALLBACK_WRAPPERS \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_INCLASS_NO_PURE_DECLS \
 	MyProjectA_Source_MyProject_BreakableWall_h_12_ENHANCED_CONSTRUCTORS \
 private: \

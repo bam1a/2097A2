@@ -15,11 +15,59 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define MyProjectA_Source_MyProject_Pickup_h_13_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execcheckIsPlayerHit) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->checkIsPlayerHit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_pickupDisplayText) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_pickupDisplayText(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_HitCountA) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_HitCountA(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_HitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_HitCount(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execOnRep_IsActive) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->OnRep_IsActive(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execaddHitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->addHitCount(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execgetHitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->getHitCount(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -43,11 +91,59 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define MyProjectA_Source_MyProject_Pickup_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execcheckIsPlayerHit) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->checkIsPlayerHit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_pickupDisplayText) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_pickupDisplayText(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_HitCountA) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_HitCountA(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_HitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnRep_HitCount(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execOnRep_IsActive) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->OnRep_IsActive(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execaddHitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->addHitCount(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execgetHitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(float*)Z_Param__Result=P_THIS->getHitCount(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -112,6 +208,11 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APickup); \
 
 
 #define MyProjectA_Source_MyProject_Pickup_h_13_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__pickupName() { return STRUCT_OFFSET(APickup, pickupName); } \
+	FORCEINLINE static uint32 __PPO__pickupDisplayText() { return STRUCT_OFFSET(APickup, pickupDisplayText); } \
+	FORCEINLINE static uint32 __PPO__HitCount() { return STRUCT_OFFSET(APickup, HitCount); } \
+	FORCEINLINE static uint32 __PPO__HitCountA() { return STRUCT_OFFSET(APickup, HitCountA); } \
+	FORCEINLINE static uint32 __PPO__name() { return STRUCT_OFFSET(APickup, name); } \
 	FORCEINLINE static uint32 __PPO__bIsActive() { return STRUCT_OFFSET(APickup, bIsActive); }
 
 

@@ -32,6 +32,9 @@ public:
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* VisableComponent;
 
+	//UPROPERTY(EditAnywhere)
+	//	UCapsuleComponent* CapsuleComponent;
+
 	UPROPERTY(EditAnyWhere)
 		UCameraComponent* Camera;
 protected:
@@ -39,10 +42,9 @@ protected:
 	float shootPower = 10.f;
 	float HP = 100.f;
 	FVector MovementInput;
+	float turningInput;
 
 	void MoveForward(float Value);
-	void MoveBack(float Value);
 	void TurnRight(float Value);
-	void TurnLeft(float Value);
 
 };
