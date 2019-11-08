@@ -40,6 +40,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//acessor for pickup name and display text
 	FString GetPickupName();
 	FString GetPickupDisplayText();
 

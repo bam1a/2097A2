@@ -48,6 +48,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_BEGIN; \
 		P_THIS->SetWinner(Z_Param_inName); \
 		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(exectimeDecrease) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->timeDecrease(); \
+		P_NATIVE_END; \
 	}
 
 
@@ -85,6 +93,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->SetWinner(Z_Param_inName); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(exectimeDecrease) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->timeDecrease(); \
 		P_NATIVE_END; \
 	}
 

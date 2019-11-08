@@ -20,13 +20,13 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddHitPower();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddHP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddSpeed();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetCurrentWall();
 	MYPROJECT_API UClass* Z_Construct_UClass_ABreakableWall_NoRegister();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetHitPower();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetHP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_getIsDead();
-	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall();
-	MYPROJECT_API UClass* Z_Construct_UClass_AMyPickupWall_NoRegister();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetSpeed();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_myRole();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
@@ -39,11 +39,12 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 			{ "AddHitPower", &AMyProjectCharacter::execAddHitPower },
 			{ "AddHP", &AMyProjectCharacter::execAddHP },
 			{ "AddSpeed", &AMyProjectCharacter::execAddSpeed },
+			{ "AddSpeedMultiplier", &AMyProjectCharacter::execAddSpeedMultiplier },
+			{ "AddStaminaJoy", &AMyProjectCharacter::execAddStaminaJoy },
 			{ "GetCurrentWall", &AMyProjectCharacter::execGetCurrentWall },
 			{ "GetHitPower", &AMyProjectCharacter::execGetHitPower },
 			{ "GetHP", &AMyProjectCharacter::execGetHP },
 			{ "getIsDead", &AMyProjectCharacter::execgetIsDead },
-			{ "GetPickupWall", &AMyProjectCharacter::execGetPickupWall },
 			{ "GetSpeed", &AMyProjectCharacter::execGetSpeed },
 			{ "myRole", &AMyProjectCharacter::execmyRole },
 		};
@@ -142,6 +143,74 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyProjectCharacter_AddSpeed_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics
+	{
+		struct MyProjectCharacter_eventAddSpeedMultiplier_Parms
+		{
+			float inMultiplier;
+		};
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_inMultiplier;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::NewProp_inMultiplier = { UE4CodeGen_Private::EPropertyClass::Float, "inMultiplier", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyProjectCharacter_eventAddSpeedMultiplier_Parms, inMultiplier), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::NewProp_inMultiplier,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyProjectCharacter, "AddSpeedMultiplier", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyProjectCharacter_eventAddSpeedMultiplier_Parms), Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics
+	{
+		struct MyProjectCharacter_eventAddStaminaJoy_Parms
+		{
+			float inStamina;
+			float inJoy;
+		};
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_inJoy;
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_inStamina;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::NewProp_inJoy = { UE4CodeGen_Private::EPropertyClass::Float, "inJoy", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyProjectCharacter_eventAddStaminaJoy_Parms, inJoy), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::NewProp_inStamina = { UE4CodeGen_Private::EPropertyClass::Float, "inStamina", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyProjectCharacter_eventAddStaminaJoy_Parms, inStamina), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::NewProp_inJoy,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::NewProp_inStamina,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyProjectCharacter, "AddStaminaJoy", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyProjectCharacter_eventAddStaminaJoy_Parms), Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -278,38 +347,6 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics
-	{
-		struct MyProjectCharacter_eventGetPickupWall_Parms
-		{
-			AMyPickupWall* ReturnValue;
-		};
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Object, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, STRUCT_OFFSET(MyProjectCharacter_eventGetPickupWall_Parms, ReturnValue), Z_Construct_UClass_AMyPickupWall_NoRegister, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::NewProp_ReturnValue,
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "MyProjectCharacter.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyProjectCharacter, "GetPickupWall", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x14020401, sizeof(MyProjectCharacter_eventGetPickupWall_Parms), Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::FuncParams);
-		}
-		return ReturnFunction;
-	}
 	struct Z_Construct_UFunction_AMyProjectCharacter_GetSpeed_Statics
 	{
 		struct MyProjectCharacter_eventGetSpeed_Parms
@@ -395,9 +432,41 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_pHP;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_finalHitPower_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_finalHitPower;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_finalSpeed_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_finalSpeed;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pDefaultMax_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_pDefaultMax;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_speedMultiplier_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_speedMultiplier;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_joyMultiplier_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_joyMultiplier;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_staminaMultiplier_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_staminaMultiplier;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pHitPower_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_pHitPower;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pJoy_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_pJoy;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pStamina_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_pStamina;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pSpeed_MetaData[];
 #endif
@@ -438,11 +507,12 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		{ &Z_Construct_UFunction_AMyProjectCharacter_AddHitPower, "AddHitPower" }, // 1416665693
 		{ &Z_Construct_UFunction_AMyProjectCharacter_AddHP, "AddHP" }, // 1585337960
 		{ &Z_Construct_UFunction_AMyProjectCharacter_AddSpeed, "AddSpeed" }, // 3244243291
+		{ &Z_Construct_UFunction_AMyProjectCharacter_AddSpeedMultiplier, "AddSpeedMultiplier" }, // 2608644773
+		{ &Z_Construct_UFunction_AMyProjectCharacter_AddStaminaJoy, "AddStaminaJoy" }, // 2453719439
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetCurrentWall, "GetCurrentWall" }, // 1134165411
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetHitPower, "GetHitPower" }, // 1439350753
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetHP, "GetHP" }, // 1333284250
 		{ &Z_Construct_UFunction_AMyProjectCharacter_getIsDead, "getIsDead" }, // 1537669089
-		{ &Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall, "GetPickupWall" }, // 714699270
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetSpeed, "GetSpeed" }, // 3299958592
 		{ &Z_Construct_UFunction_AMyProjectCharacter_myRole, "myRole" }, // 2983219357
 	};
@@ -468,12 +538,68 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHP = { UE4CodeGen_Private::EPropertyClass::Float, "pHP", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, pHP), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHP_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHP_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalHitPower_MetaData[] = {
+		{ "Category", "MyProjectCharacter" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalHitPower = { UE4CodeGen_Private::EPropertyClass::Float, "finalHitPower", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000014, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, finalHitPower), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalHitPower_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalHitPower_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalSpeed_MetaData[] = {
+		{ "Category", "MyProjectCharacter" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "finalSpeed", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000014, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, finalSpeed), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalSpeed_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalSpeed_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pDefaultMax_MetaData[] = {
+		{ "Category", "Parameters" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pDefaultMax = { UE4CodeGen_Private::EPropertyClass::Float, "pDefaultMax", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, pDefaultMax), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pDefaultMax_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pDefaultMax_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_speedMultiplier_MetaData[] = {
+		{ "Category", "Parameters" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_speedMultiplier = { UE4CodeGen_Private::EPropertyClass::Float, "speedMultiplier", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, speedMultiplier), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_speedMultiplier_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_speedMultiplier_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_joyMultiplier_MetaData[] = {
+		{ "Category", "Parameters" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_joyMultiplier = { UE4CodeGen_Private::EPropertyClass::Float, "joyMultiplier", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, joyMultiplier), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_joyMultiplier_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_joyMultiplier_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_staminaMultiplier_MetaData[] = {
+		{ "Category", "Parameters" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_staminaMultiplier = { UE4CodeGen_Private::EPropertyClass::Float, "staminaMultiplier", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, staminaMultiplier), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_staminaMultiplier_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_staminaMultiplier_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHitPower_MetaData[] = {
 		{ "Category", "Parameters" },
 		{ "ModuleRelativePath", "MyProjectCharacter.h" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHitPower = { UE4CodeGen_Private::EPropertyClass::Float, "pHitPower", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, pHitPower), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHitPower_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHitPower_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pJoy_MetaData[] = {
+		{ "Category", "Parameters" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pJoy = { UE4CodeGen_Private::EPropertyClass::Float, "pJoy", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, pJoy), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pJoy_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pJoy_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pStamina_MetaData[] = {
+		{ "Category", "Parameters" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pStamina = { UE4CodeGen_Private::EPropertyClass::Float, "pStamina", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000015, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, pStamina), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pStamina_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pStamina_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pSpeed_MetaData[] = {
 		{ "Category", "Parameters" },
@@ -534,7 +660,15 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyProjectCharacter_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pRole,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHP,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalHitPower,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_finalSpeed,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pDefaultMax,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_speedMultiplier,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_joyMultiplier,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_staminaMultiplier,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHitPower,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pJoy,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pStamina,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_PickupDisplayText,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_PickupName,
@@ -566,7 +700,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyProjectCharacter, 722504198);
+	IMPLEMENT_CLASS(AMyProjectCharacter, 330752082);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyProjectCharacter(Z_Construct_UClass_AMyProjectCharacter, &AMyProjectCharacter::StaticClass, TEXT("/Script/MyProject"), TEXT("AMyProjectCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyProjectCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "BreakableWall.h"
-#include "MyPickupWall.h"
 #include "Pickup.h"
 #include "MyProjectCharacter.generated.h"
 
@@ -103,7 +102,6 @@ public:
 	//functional variables
 	ABreakableWall* CurrentWall = nullptr;
 	APickup* CurrentPickup = nullptr;
-	AMyPickupWall* CurrentPickupWall = nullptr;
 
 
 	UPROPERTY(BlueprintReadOnly)
@@ -117,8 +115,12 @@ public:
 		float GetSpeed() { return pSpeed; }
 	UFUNCTION(BlueprintCallable)
 		void AddSpeed(float inSpeed) { pSpeed *= inSpeed; }
+	UFUNCTION(BlueprintCallable)
+		void AddStaminaJoy(float inStamina, float inJoy);
+	UFUNCTION(BlueprintCallable)
+		void AddSpeedMultiplier(float inMultiplier) { speedMultiplier += inMultiplier; }
 	UFUNCTION(BlueprintPure)
-		float GetHitPower() { return pHitPower; }
+		float GetHitPower() { return finalHitPower; }
 	UFUNCTION(BlueprintCallable)
 		void AddHitPower(float inHit) { pHitPower += inHit; }
 	UFUNCTION(BlueprintPure)
@@ -129,22 +131,38 @@ public:
 		bool getIsDead(){ return pIsDead; }
 	UFUNCTION(BlueprintPure)
 		ABreakableWall* GetCurrentWall() { return CurrentWall; }
-	UFUNCTION(BlueprintPure)
-		AMyPickupWall* GetPickupWall() { return CurrentPickupWall; }
 
 	//parameters
-	//speed:move speed multiplier
-	//hit power: power for hitting the wall
+	//speed:move speed multiplier(keep as 1, 1 is the fastest it can goes)
+	//hit power: power for hitting the wall, can be take advantaged by joy (max 100+)
+	//Joy: reduces over time, restored by consuming any powerup, impacted speed and hit power(max 100+)
 	//HP: health of the player(decrease by time)(unused as intergrated to game mode)
 	//pIsDead: determine player is dead or not(unused ad intergrated to game mode)
 protected:
-	bool pIsDead = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
-	float pSpeed = 0.2f;
+	float pSpeed = 0.5f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
-	float pHitPower = 10.f;
+	float pStamina = 100.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float pJoy = 100.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float pHitPower = 20.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float staminaMultiplier = 3.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float joyMultiplier = 1.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float speedMultiplier = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
+	float pDefaultMax = 100.f;
+	UPROPERTY(BlueprintReadOnly)
+	float finalSpeed = 0.f;
+	UPROPERTY(BlueprintReadOnly)
+	float finalHitPower = 0.f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
 	float pHP = 100.f;
+	bool pIsDead = false;
 
 	UPROPERTY(BlueprintReadOnly)
 	FString pRole="client";

@@ -25,9 +25,10 @@ void AMyProjectGameMode::BeginPlay()
 
 void AMyProjectGameMode::Tick(float DeltaSeconds)
 {
-	//timer action
-	gHP -= DeltaSeconds;
-	//if winner name is obtained, stop the game and tell that guy is win
+	if (isInGasRm) {
+		timeDecrease();
+	}
+	//if winner name is obtained, stop the game and tell everyone that guy is win
 	if (gWinnerName != "") {
 		HasWinner();
 	}
@@ -35,6 +36,17 @@ void AMyProjectGameMode::Tick(float DeltaSeconds)
 	else if (gHP <= 0.f) {
 		AllLoser();
 	}
+	//if there's too much hp, block it back to max hp
+	else if (gHP > 30.f) {
+		gHP = maxHP;
+	}
+}
+
+void AMyProjectGameMode::timeDecrease()
+{
+	//timer action
+	//reduces the players health by 1% of its max hp every 5 seconds
+	gHP -= (GetWorld()->DeltaTimeSeconds * (maxHP* (0.01f/5.f)));
 }
 
 void AMyProjectGameMode::SetWinner(FString inName)

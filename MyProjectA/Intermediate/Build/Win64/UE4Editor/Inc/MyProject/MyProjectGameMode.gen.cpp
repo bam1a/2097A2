@@ -23,6 +23,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectGameMode_HasWinner();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectGameMode_HasWinnerBP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectGameMode_SetWinner();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectGameMode_timeDecrease();
 // End Cross Module References
 	static FName NAME_AMyProjectGameMode_AllLoser = FName(TEXT("AllLoser"));
 	void AMyProjectGameMode::AllLoser()
@@ -52,6 +53,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 			{ "GetWinner", &AMyProjectGameMode::execGetWinner },
 			{ "HasWinner", &AMyProjectGameMode::execHasWinner },
 			{ "SetWinner", &AMyProjectGameMode::execSetWinner },
+			{ "timeDecrease", &AMyProjectGameMode::exectimeDecrease },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
@@ -207,6 +209,28 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AMyProjectGameMode_timeDecrease_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyProjectGameMode_timeDecrease_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "MyProjectGameMode.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyProjectGameMode_timeDecrease_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyProjectGameMode, "timeDecrease", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyProjectGameMode_timeDecrease_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectGameMode_timeDecrease_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyProjectGameMode_timeDecrease()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyProjectGameMode_timeDecrease_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AMyProjectGameMode_NoRegister()
 	{
 		return AMyProjectGameMode::StaticClass();
@@ -218,6 +242,11 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_isInGasRm_MetaData[];
+#endif
+		static void NewProp_isInGasRm_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_isInGasRm;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_maxHP_MetaData[];
 #endif
@@ -246,6 +275,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 		{ &Z_Construct_UFunction_AMyProjectGameMode_HasWinner, "HasWinner" }, // 1221432476
 		{ &Z_Construct_UFunction_AMyProjectGameMode_HasWinnerBP, "HasWinnerBP" }, // 2307333798
 		{ &Z_Construct_UFunction_AMyProjectGameMode_SetWinner, "SetWinner" }, // 234593628
+		{ &Z_Construct_UFunction_AMyProjectGameMode_timeDecrease, "timeDecrease" }, // 373168460
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectGameMode_Statics::Class_MetaDataParams[] = {
@@ -255,6 +285,17 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
 #endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm_MetaData[] = {
+		{ "Category", "MyProjectGameMode" },
+		{ "ModuleRelativePath", "MyProjectGameMode.h" },
+	};
+#endif
+	void Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm_SetBit(void* Obj)
+	{
+		((AMyProjectGameMode*)Obj)->isInGasRm = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm = { UE4CodeGen_Private::EPropertyClass::Bool, "isInGasRm", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000004, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyProjectGameMode), &Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_maxHP_MetaData[] = {
 		{ "Category", "MyProjectGameMode" },
@@ -280,6 +321,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_PlayerIDArr = { UE4CodeGen_Private::EPropertyClass::Array, "PlayerIDArr", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000005, 1, nullptr, STRUCT_OFFSET(AMyProjectGameMode, PlayerIDArr), METADATA_PARAMS(Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_PlayerIDArr_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_PlayerIDArr_MetaData)) };
 	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_PlayerIDArr_Inner = { UE4CodeGen_Private::EPropertyClass::Int, "PlayerIDArr", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0000000000000000, 1, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyProjectGameMode_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_isInGasRm,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_maxHP,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_gHP,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectGameMode_Statics::NewProp_PlayerIDArr,
@@ -308,7 +350,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectGameMode() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyProjectGameMode, 2309300180);
+	IMPLEMENT_CLASS(AMyProjectGameMode, 2364767644);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyProjectGameMode(Z_Construct_UClass_AMyProjectGameMode, &AMyProjectGameMode::StaticClass, TEXT("/Script/MyProject"), TEXT("AMyProjectGameMode"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyProjectGameMode);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

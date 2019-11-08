@@ -113,6 +113,42 @@ void AMyProjectCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime); // Call parent class tick function  
 
 	CallMyTrace();
+	//lock the stamina and joy when more than default max
+	if (pStamina > pDefaultMax) {
+		pStamina = pDefaultMax;
+	}
+	if (pJoy > pDefaultMax) {
+		pJoy = pDefaultMax;
+	}
+
+	//Joy reduces over time
+	pJoy -= DeltaTime*joyMultiplier;
+	finalSpeed = pSpeed;//lock the stamina and joy when less than 0
+	if (pStamina <= 0.f) {
+		pStamina = 0.f;
+		finalSpeed *= 0.2;
+	}
+	else if (pJoy <= 0.f) {
+		pJoy = 0.f;
+		finalSpeed *= 0.5;
+	}
+
+	//speedMultiplier reduces over time
+	speedMultiplier -= DeltaTime;
+	//if there's a speed multiplier more than 0, multiply final speed by 2
+	if (speedMultiplier <= 0.f) {
+		speedMultiplier = 0;
+	}
+	else if (speedMultiplier >= 30.f) {
+		speedMultiplier = 30.f;
+
+	}
+	else {
+		finalSpeed *= 2.f;
+	}
+
+	//define the final hit power
+	finalHitPower = pHitPower * (1 + (pJoy / pDefaultMax));
 }
 
 void AMyProjectCharacter::OnResetVR()
@@ -152,7 +188,10 @@ void AMyProjectCharacter::MoveForward(float Value)
 
 		// get forward vector
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		AddMovementInput(Direction, (Value*pSpeed));
+		AddMovementInput(Direction, (Value*finalSpeed));
+
+		//Stamina reduced by moving
+		pStamina -= GetWorld()->DeltaTimeSeconds*staminaMultiplier;
 	}
 }
 
@@ -167,7 +206,10 @@ void AMyProjectCharacter::MoveRight(float Value)
 		// get right vector 
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
-		AddMovementInput(Direction, (Value*pSpeed));
+		AddMovementInput(Direction, (Value*finalSpeed));
+
+		//Stamina reduced by moving
+		pStamina -= GetWorld()->DeltaTimeSeconds*staminaMultiplier;
 	}
 }
 
@@ -354,6 +396,12 @@ void AMyProjectCharacter::ClearPickupInfo()
 	CurrentWall = nullptr;
 	CurrentPickup = nullptr;
 	PickupFound = false;
+}
+
+void AMyProjectCharacter::AddStaminaJoy(float inStamina, float inJoy)
+{
+	pStamina += inStamina;
+	pJoy += inJoy;
 }
 
 void AMyProjectCharacter::AddHP(float inHP)

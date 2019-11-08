@@ -32,6 +32,12 @@ public:
 	FString gWinnerName = "";
 
 	UFUNCTION(BlueprintCallable)
+		void timeDecrease();
+	UPROPERTY(BlueprintReadWrite)
+		bool isInGasRm=false;
+
+
+	UFUNCTION(BlueprintCallable)
 		void SetWinner(FString inName);
 	UFUNCTION(BlueprintPure)
 		FString GetWinner() { return gWinnerName; }

@@ -24,12 +24,17 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	//only things to concern is the time, stamina and joy
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
-		float addSpeed = 10.f;
+		float addSpeed = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
-		float addPower = 10.f;
+		float addPower = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
-		float addTime = 10.f;
+		float addHP = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
+		float addStamina = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
+		float addJoy = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
 		bool isEndGame = false;
 
