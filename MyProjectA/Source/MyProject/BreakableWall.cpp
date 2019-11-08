@@ -37,7 +37,7 @@ void ABreakableWall::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(ABreakableWall, COND_SimulatedOnly);
+	//DOREPLIFETIME(ABreakableWall, COND_SimulatedOnly);
 	DOREPLIFETIME(ABreakableWall, bIsActive);
 	DOREPLIFETIME(ABreakableWall, wHP);
 	DOREPLIFETIME(ABreakableWall, topHP);
@@ -58,8 +58,6 @@ void ABreakableWall::setActive(bool inState)
 	}
 }
 
-
-
 void ABreakableWall::UpdateWallRender_Implementation()
 {
 	UpdateWallRenderBP();
@@ -70,35 +68,13 @@ void ABreakableWall::WallBreak_Implementation()
 	WallBreakBP();
 }
 
-
-void ABreakableWall::BeingHit_Implementation(float inAtk)
+void ABreakableWall::onHit()
 {
-	//if server, call execute it directly and make changes both server and client
-	//otherwise call a server RPC function to execute this function(client->server->multicast to other)
-	if (Role == ROLE_Authority) { 
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "server");
-		wHP -= inAtk;
-
-		UpdateWallRender();
-	}
-	else {
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "client");
-		BeingHitClient(inAtk);
-	}
+	onHitBP();
 }
 
 
-bool  ABreakableWall::BeingHitClient_Validate(float inAtk) {
-	//this action must be executed 
-	return true;
-}
-void ABreakableWall::BeingHitClient_Implementation(float inAtk)
-{
-	//dunno why it can't be executed by client, even it's validated or in BP, and the debug msg can't executed, it that the ownership issue?
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "client to server broadcast to client");
-	//call server to execute the being hit function.
-	BeingHit(inAtk);
-}
+
 void ABreakableWall::OnRep_IsActive()
 {
 	//bla bla bla code

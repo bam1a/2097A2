@@ -57,10 +57,10 @@ void AMyProjectCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	if (Role == ROLE_Authority) {
-		role="server";
+		pRole="server";
 	}
 	else {
-		role = "client";
+		pRole = "client";
 	}
 }
 
@@ -97,9 +97,11 @@ FString AMyProjectCharacter::myRole()
 {
 	if (Role == ROLE_Authority) {
 		return TEXT("Server");
+		pRole = "server";
 	}
 	else {
 		return TEXT("Client");
+		pRole = "client";
 	}
 
 	
@@ -150,7 +152,7 @@ void AMyProjectCharacter::MoveForward(float Value)
 
 		// get forward vector
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		AddMovementInput(Direction, Value);
+		AddMovementInput(Direction, (Value*pSpeed));
 	}
 }
 
@@ -165,7 +167,7 @@ void AMyProjectCharacter::MoveRight(float Value)
 		// get right vector 
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
-		AddMovementInput(Direction, Value);
+		AddMovementInput(Direction, (Value*pSpeed));
 	}
 }
 
@@ -295,6 +297,7 @@ void AMyProjectCharacter::ProcessTraceHit(FHitResult& HitOut)
 	// Cast the actor to APickup
 	APickup* const TestPickup = Cast<APickup>(HitOut.GetActor());
 	ABreakableWall* const targetWall = Cast <ABreakableWall>(HitOut.GetActor());
+	//AMyPickupWall* const pickupWall= Cast <AMyPickupWall>(HitOut.GetActor());
 
 	if (TestPickup)
 	{
@@ -310,25 +313,32 @@ void AMyProjectCharacter::ProcessTraceHit(FHitResult& HitOut)
 			FString inText = "PickupName: " + TestPickup->GetPickupName();
 			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, inText );
 		}
-		PickupName = TestPickup->GetPickupName();
 
 		// Set a local variable of the PickupDisplayText for the HUD
 		//UE_LOG(LogClass, Warning, TEXT("PickupDisplayText: %s"), *TestPickup->GetPickupDisplayText());
-		PickupDisplayText = TestPickup->GetPickupDisplayText();
 		PickupFound = true;
 	}
 	else if (targetWall) {
+
+
+		// Keep a pointer to the wall
 		CurrentWall = targetWall;
 		//display the name of the wall
+		//PickupName = targetWall->GetName();
 		PickupName = targetWall->GetName();
 		PickupDisplayText = targetWall->GetText();
-		//if (Role == ROLE_Authority) {
+		// Set a local variable of the PickupName for the HUD
+		//UE_LOG(LogClass, Warning, TEXT("PickupName: %s"), *TestPickup->GetPickupName());
+		if (Role == ROLE_Authority) {
+			FString inText = "PickupName: " + targetWall->GetName();
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, inText );
+		}
 
-		//}
-		//else {
-		//	FString inText = "hit this wall: " + targetWall->GetName();
-		//	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, inText);
-		//}
+		// Set a local variable of the PickupDisplayText for the HUD
+		//UE_LOG(LogClass, Warning, TEXT("PickupDisplayText: %s"), *TestPickup->GetPickupDisplayText());
+		PickupFound = true;
+
+
 	}
 	else
 	{
@@ -343,6 +353,7 @@ void AMyProjectCharacter::ClearPickupInfo()
 	PickupDisplayText = "";
 	CurrentWall = nullptr;
 	CurrentPickup = nullptr;
+	PickupFound = false;
 }
 
 void AMyProjectCharacter::AddHP(float inHP)

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "BreakableWall.h"
+#include "MyPickupWall.h"
 #include "Pickup.h"
 #include "MyProjectCharacter.generated.h"
 
@@ -102,6 +103,8 @@ public:
 	//functional variables
 	ABreakableWall* CurrentWall = nullptr;
 	APickup* CurrentPickup = nullptr;
+	AMyPickupWall* CurrentPickupWall = nullptr;
+
 
 	UPROPERTY(BlueprintReadOnly)
 	FString PickupName;
@@ -113,7 +116,7 @@ public:
 	UFUNCTION(BlueprintPure)
 		float GetSpeed() { return pSpeed; }
 	UFUNCTION(BlueprintCallable)
-		void AddSpeed(float inSpeed) { pSpeed += inSpeed; }
+		void AddSpeed(float inSpeed) { pSpeed *= inSpeed; }
 	UFUNCTION(BlueprintPure)
 		float GetHitPower() { return pHitPower; }
 	UFUNCTION(BlueprintCallable)
@@ -126,20 +129,24 @@ public:
 		bool getIsDead(){ return pIsDead; }
 	UFUNCTION(BlueprintPure)
 		ABreakableWall* GetCurrentWall() { return CurrentWall; }
+	UFUNCTION(BlueprintPure)
+		AMyPickupWall* GetPickupWall() { return CurrentPickupWall; }
 
 	//parameters
-	//speed:move speed
+	//speed:move speed multiplier
 	//hit power: power for hitting the wall
-	//HP: health of the player(decrease by time)
+	//HP: health of the player(decrease by time)(unused as intergrated to game mode)
+	//pIsDead: determine player is dead or not(unused ad intergrated to game mode)
 protected:
 	bool pIsDead = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
-	float pSpeed = 500.0f;
+	float pSpeed = 0.2f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
 	float pHitPower = 10.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Parameters")
 	float pHP = 100.f;
 
-	FString role="client";
+	UPROPERTY(BlueprintReadOnly)
+	FString pRole="client";
 };
 

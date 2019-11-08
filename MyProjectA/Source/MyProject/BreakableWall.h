@@ -42,15 +42,12 @@ public:
 	UFUNCTION(BlueprintPure)
 		float GetHP() { return wHP; }
 
-	UFUNCTION(BlueprintCallable, NetMulticast, reliable)
-		void BeingHit(float inAtk);
+	UFUNCTION(BlueprintCallable)
+		void onHit();
 
-	UFUNCTION(BlueprintCallable, Server, reliable, WithValidation)
-		void BeingHitClient(float inAtk);
-	void BeingHitClient_Implementation(float inAtk);
-	bool BeingHitClient_Validate(float inAtk);
+	UFUNCTION(BlueprintImplementableEvent)
+		void onHitBP();
 
-	
 	UFUNCTION(BlueprintCallable, NetMulticast, reliable)
 		void UpdateWallRender();
 
@@ -63,6 +60,19 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 		void WallBreakBP();
 
+	UFUNCTION(BlueprintCallable)
+		void addHitCount() {
+		if (Role == ROLE_Authority) {
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "server");
+			wHP++;
+			wName = FString::SanitizeFloat(wHP);
+			//UpdateWallRender();
+		}
+		else {
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "client");
+		}
+	}
+
 
 protected:
 	UPROPERTY(EditAnyWhere,Category="Parameters", ReplicatedUsing = OnRep_wHP, BlueprintReadWrite)
@@ -73,7 +83,7 @@ protected:
 	UPROPERTY(EditAnyWhere, Category = "Parameters", BlueprintReadWrite)
 	FString wName = "wall";
 	UPROPERTY(EditAnyWhere, Category = "Parameters", ReplicatedUsing = OnRep_wText, BlueprintReadWrite)
-	FString wText = "press space to break";
+	FString wText = "push it to break";
 
 	UPROPERTY(ReplicatedUsing = OnRep_IsActive)
 	bool bIsActive;

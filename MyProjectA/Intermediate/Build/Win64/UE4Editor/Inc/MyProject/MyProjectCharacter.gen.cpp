@@ -25,6 +25,8 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetHitPower();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetHP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_getIsDead();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall();
+	MYPROJECT_API UClass* Z_Construct_UClass_AMyPickupWall_NoRegister();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetSpeed();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_AMyProjectCharacter_myRole();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
@@ -41,6 +43,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 			{ "GetHitPower", &AMyProjectCharacter::execGetHitPower },
 			{ "GetHP", &AMyProjectCharacter::execGetHP },
 			{ "getIsDead", &AMyProjectCharacter::execgetIsDead },
+			{ "GetPickupWall", &AMyProjectCharacter::execGetPickupWall },
 			{ "GetSpeed", &AMyProjectCharacter::execGetSpeed },
 			{ "myRole", &AMyProjectCharacter::execmyRole },
 		};
@@ -275,6 +278,38 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics
+	{
+		struct MyProjectCharacter_eventGetPickupWall_Parms
+		{
+			AMyPickupWall* ReturnValue;
+		};
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Object, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, STRUCT_OFFSET(MyProjectCharacter_eventGetPickupWall_Parms, ReturnValue), Z_Construct_UClass_AMyPickupWall_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyProjectCharacter, "GetPickupWall", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x14020401, sizeof(MyProjectCharacter_eventGetPickupWall_Parms), Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AMyProjectCharacter_GetSpeed_Statics
 	{
 		struct MyProjectCharacter_eventGetSpeed_Parms
@@ -352,6 +387,10 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pRole_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_pRole;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_pHP_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_pHP;
@@ -403,6 +442,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetHitPower, "GetHitPower" }, // 1439350753
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetHP, "GetHP" }, // 1333284250
 		{ &Z_Construct_UFunction_AMyProjectCharacter_getIsDead, "getIsDead" }, // 1537669089
+		{ &Z_Construct_UFunction_AMyProjectCharacter_GetPickupWall, "GetPickupWall" }, // 714699270
 		{ &Z_Construct_UFunction_AMyProjectCharacter_GetSpeed, "GetSpeed" }, // 3299958592
 		{ &Z_Construct_UFunction_AMyProjectCharacter_myRole, "myRole" }, // 2983219357
 	};
@@ -413,6 +453,13 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		{ "ModuleRelativePath", "MyProjectCharacter.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pRole_MetaData[] = {
+		{ "Category", "MyProjectCharacter" },
+		{ "ModuleRelativePath", "MyProjectCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pRole = { UE4CodeGen_Private::EPropertyClass::Str, "pRole", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000014, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, pRole), METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pRole_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pRole_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHP_MetaData[] = {
 		{ "Category", "Parameters" },
@@ -485,6 +532,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_CameraBoom = { UE4CodeGen_Private::EPropertyClass::Object, "CameraBoom", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyProjectCharacter, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_CameraBoom_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_CameraBoom_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyProjectCharacter_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pRole,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHP,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pHitPower,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyProjectCharacter_Statics::NewProp_pSpeed,
@@ -518,7 +566,7 @@ void EmptyLinkFunctionForGeneratedCodeMyProjectCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyProjectCharacter, 878228118);
+	IMPLEMENT_CLASS(AMyProjectCharacter, 722504198);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyProjectCharacter(Z_Construct_UClass_AMyProjectCharacter, &AMyProjectCharacter::StaticClass, TEXT("/Script/MyProject"), TEXT("AMyProjectCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyProjectCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

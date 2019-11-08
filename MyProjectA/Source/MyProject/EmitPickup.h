@@ -24,6 +24,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
+		float addSpeed = 10.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
+		float addPower = 10.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
+		float addTime = 10.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "parameters")
+		bool isEndGame = false;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void emitExplosionBP();

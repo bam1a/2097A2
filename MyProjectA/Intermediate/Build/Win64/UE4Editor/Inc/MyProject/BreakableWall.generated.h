@@ -16,9 +16,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS \
 	virtual void WallBreak_Implementation(); \
 	virtual void UpdateWallRender_Implementation(); \
-	virtual bool BeingHitClient_Validate(float ); \
-	virtual void BeingHitClient_Implementation(float inAtk); \
-	virtual void BeingHit_Implementation(float inAtk); \
  \
 	DECLARE_FUNCTION(execOnRep_wText) \
 	{ \
@@ -52,6 +49,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
+	DECLARE_FUNCTION(execaddHitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->addHitCount(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execWallBreak) \
 	{ \
 		P_FINISH; \
@@ -68,26 +73,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execBeingHitClient) \
+	DECLARE_FUNCTION(execonHit) \
 	{ \
-		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		if (!P_THIS->BeingHitClient_Validate(Z_Param_inAtk)) \
-		{ \
-			RPC_ValidateFailed(TEXT("BeingHitClient_Validate")); \
-			return; \
-		} \
-		P_THIS->BeingHitClient_Implementation(Z_Param_inAtk); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execBeingHit) \
-	{ \
-		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BeingHit_Implementation(Z_Param_inAtk); \
+		P_THIS->onHit(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -136,7 +126,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define MyProjectA_Source_MyProject_BreakableWall_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void WallBreak_Implementation(); \
 	virtual void UpdateWallRender_Implementation(); \
-	virtual void BeingHit_Implementation(float inAtk); \
  \
 	DECLARE_FUNCTION(execOnRep_wText) \
 	{ \
@@ -170,6 +159,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
+	DECLARE_FUNCTION(execaddHitCount) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->addHitCount(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execWallBreak) \
 	{ \
 		P_FINISH; \
@@ -186,26 +183,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execBeingHitClient) \
+	DECLARE_FUNCTION(execonHit) \
 	{ \
-		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		if (!P_THIS->BeingHitClient_Validate(Z_Param_inAtk)) \
-		{ \
-			RPC_ValidateFailed(TEXT("BeingHitClient_Validate")); \
-			return; \
-		} \
-		P_THIS->BeingHitClient_Implementation(Z_Param_inAtk); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execBeingHit) \
-	{ \
-		P_GET_PROPERTY(UFloatProperty,Z_Param_inAtk); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BeingHit_Implementation(Z_Param_inAtk); \
+		P_THIS->onHit(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -251,17 +233,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define MyProjectA_Source_MyProject_BreakableWall_h_12_EVENT_PARMS \
-	struct BreakableWall_eventBeingHit_Parms \
-	{ \
-		float inAtk; \
-	}; \
-	struct BreakableWall_eventBeingHitClient_Parms \
-	{ \
-		float inAtk; \
-	};
-
-
+#define MyProjectA_Source_MyProject_BreakableWall_h_12_EVENT_PARMS
 #define MyProjectA_Source_MyProject_BreakableWall_h_12_CALLBACK_WRAPPERS
 #define MyProjectA_Source_MyProject_BreakableWall_h_12_INCLASS_NO_PURE_DECLS \
 private: \

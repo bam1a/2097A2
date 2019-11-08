@@ -13,8 +13,84 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define MYPROJECT_MyProjectGameMode_generated_h
 
-#define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_RPC_WRAPPERS
-#define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_RPC_WRAPPERS \
+	virtual void HasWinner_Implementation(); \
+	virtual void AllLoser_Implementation(); \
+ \
+	DECLARE_FUNCTION(execHasWinner) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->HasWinner_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAllLoser) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AllLoser_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetWinner) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=P_THIS->GetWinner(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetWinner) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_inName); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SetWinner(Z_Param_inName); \
+		P_NATIVE_END; \
+	}
+
+
+#define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void HasWinner_Implementation(); \
+	virtual void AllLoser_Implementation(); \
+ \
+	DECLARE_FUNCTION(execHasWinner) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->HasWinner_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execAllLoser) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AllLoser_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetWinner) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=P_THIS->GetWinner(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetWinner) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_inName); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SetWinner(Z_Param_inName); \
+		P_NATIVE_END; \
+	}
+
+
+#define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_EVENT_PARMS
+#define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_CALLBACK_WRAPPERS
 #define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMyProjectGameMode(); \
@@ -58,12 +134,16 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyProjectGameMode); \
 
 
 #define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_PRIVATE_PROPERTY_OFFSET
-#define MyProjectA_Source_MyProject_MyProjectGameMode_h_9_PROLOG
+#define MyProjectA_Source_MyProject_MyProjectGameMode_h_9_PROLOG \
+	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_EVENT_PARMS
+
+
 #define MyProjectA_Source_MyProject_MyProjectGameMode_h_12_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_PRIVATE_PROPERTY_OFFSET \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_RPC_WRAPPERS \
+	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_CALLBACK_WRAPPERS \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_INCLASS \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_STANDARD_CONSTRUCTORS \
 public: \
@@ -75,6 +155,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_PRIVATE_PROPERTY_OFFSET \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_CALLBACK_WRAPPERS \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_INCLASS_NO_PURE_DECLS \
 	MyProjectA_Source_MyProject_MyProjectGameMode_h_12_ENHANCED_CONSTRUCTORS \
 private: \

@@ -17,12 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 	MYPROJECT_API UClass* Z_Construct_UClass_ABreakableWall();
 	ENGINE_API UClass* Z_Construct_UClass_AStaticMeshActor();
 	UPackage* Z_Construct_UPackage__Script_MyProject();
-	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_BeingHit();
-	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_BeingHitClient();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_addHitCount();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_GetHP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_GetName();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_GetText();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_isActive();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_onHit();
+	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_onHitBP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_OnRep_IsActive();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_OnRep_topHP();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_OnRep_wHP();
@@ -33,19 +34,10 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_WallBreak();
 	MYPROJECT_API UFunction* Z_Construct_UFunction_ABreakableWall_WallBreakBP();
 // End Cross Module References
-	static FName NAME_ABreakableWall_BeingHit = FName(TEXT("BeingHit"));
-	void ABreakableWall::BeingHit(float inAtk)
+	static FName NAME_ABreakableWall_onHitBP = FName(TEXT("onHitBP"));
+	void ABreakableWall::onHitBP()
 	{
-		BreakableWall_eventBeingHit_Parms Parms;
-		Parms.inAtk=inAtk;
-		ProcessEvent(FindFunctionChecked(NAME_ABreakableWall_BeingHit),&Parms);
-	}
-	static FName NAME_ABreakableWall_BeingHitClient = FName(TEXT("BeingHitClient"));
-	void ABreakableWall::BeingHitClient(float inAtk)
-	{
-		BreakableWall_eventBeingHitClient_Parms Parms;
-		Parms.inAtk=inAtk;
-		ProcessEvent(FindFunctionChecked(NAME_ABreakableWall_BeingHitClient),&Parms);
+		ProcessEvent(FindFunctionChecked(NAME_ABreakableWall_onHitBP),NULL);
 	}
 	static FName NAME_ABreakableWall_UpdateWallRender = FName(TEXT("UpdateWallRender"));
 	void ABreakableWall::UpdateWallRender()
@@ -71,12 +63,12 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 	{
 		UClass* Class = ABreakableWall::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "BeingHit", &ABreakableWall::execBeingHit },
-			{ "BeingHitClient", &ABreakableWall::execBeingHitClient },
+			{ "addHitCount", &ABreakableWall::execaddHitCount },
 			{ "GetHP", &ABreakableWall::execGetHP },
 			{ "GetName", &ABreakableWall::execGetName },
 			{ "GetText", &ABreakableWall::execGetText },
 			{ "isActive", &ABreakableWall::execisActive },
+			{ "onHit", &ABreakableWall::execonHit },
 			{ "OnRep_IsActive", &ABreakableWall::execOnRep_IsActive },
 			{ "OnRep_topHP", &ABreakableWall::execOnRep_topHP },
 			{ "OnRep_wHP", &ABreakableWall::execOnRep_wHP },
@@ -87,59 +79,25 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
-	struct Z_Construct_UFunction_ABreakableWall_BeingHit_Statics
+	struct Z_Construct_UFunction_ABreakableWall_addHitCount_Statics
 	{
-		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_inAtk;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::NewProp_inAtk = { UE4CodeGen_Private::EPropertyClass::Float, "inAtk", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(BreakableWall_eventBeingHit_Parms, inAtk), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::NewProp_inAtk,
-	};
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::Function_MetaDataParams[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABreakableWall_addHitCount_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "BreakableWall.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABreakableWall, "BeingHit", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04024CC0, sizeof(BreakableWall_eventBeingHit_Parms), Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_ABreakableWall_BeingHit()
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ABreakableWall_addHitCount_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABreakableWall, "addHitCount", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABreakableWall_addHitCount_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_addHitCount_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ABreakableWall_addHitCount()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABreakableWall_BeingHit_Statics::FuncParams);
-		}
-		return ReturnFunction;
-	}
-	struct Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics
-	{
-		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_inAtk;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::NewProp_inAtk = { UE4CodeGen_Private::EPropertyClass::Float, "inAtk", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(BreakableWall_eventBeingHitClient_Parms, inAtk), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::NewProp_inAtk,
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "BreakableWall.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABreakableWall, "BeingHitClient", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x84220CC0, sizeof(BreakableWall_eventBeingHitClient_Parms), Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_ABreakableWall_BeingHitClient()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABreakableWall_BeingHitClient_Statics::FuncParams);
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABreakableWall_addHitCount_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -274,6 +232,50 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABreakableWall_isActive_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ABreakableWall_onHit_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABreakableWall_onHit_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BreakableWall.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ABreakableWall_onHit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABreakableWall, "onHit", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABreakableWall_onHit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_onHit_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ABreakableWall_onHit()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABreakableWall_onHit_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ABreakableWall_onHitBP_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABreakableWall_onHitBP_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BreakableWall.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ABreakableWall_onHitBP_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABreakableWall, "onHitBP", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020800, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABreakableWall_onHitBP_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ABreakableWall_onHitBP_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ABreakableWall_onHitBP()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABreakableWall_onHitBP_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -531,12 +533,13 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_MyProject,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_ABreakableWall_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_ABreakableWall_BeingHit, "BeingHit" }, // 145104341
-		{ &Z_Construct_UFunction_ABreakableWall_BeingHitClient, "BeingHitClient" }, // 537306459
+		{ &Z_Construct_UFunction_ABreakableWall_addHitCount, "addHitCount" }, // 2457664385
 		{ &Z_Construct_UFunction_ABreakableWall_GetHP, "GetHP" }, // 118450162
 		{ &Z_Construct_UFunction_ABreakableWall_GetName, "GetName" }, // 3442979011
 		{ &Z_Construct_UFunction_ABreakableWall_GetText, "GetText" }, // 2613210442
 		{ &Z_Construct_UFunction_ABreakableWall_isActive, "isActive" }, // 3124656815
+		{ &Z_Construct_UFunction_ABreakableWall_onHit, "onHit" }, // 3006323160
+		{ &Z_Construct_UFunction_ABreakableWall_onHitBP, "onHitBP" }, // 800662368
 		{ &Z_Construct_UFunction_ABreakableWall_OnRep_IsActive, "OnRep_IsActive" }, // 1926351265
 		{ &Z_Construct_UFunction_ABreakableWall_OnRep_topHP, "OnRep_topHP" }, // 2066182992
 		{ &Z_Construct_UFunction_ABreakableWall_OnRep_wHP, "OnRep_wHP" }, // 2666262721
@@ -623,7 +626,7 @@ void EmptyLinkFunctionForGeneratedCodeBreakableWall() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABreakableWall, 2284986567);
+	IMPLEMENT_CLASS(ABreakableWall, 47414391);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ABreakableWall(Z_Construct_UClass_ABreakableWall, &ABreakableWall::StaticClass, TEXT("/Script/MyProject"), TEXT("ABreakableWall"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ABreakableWall);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
